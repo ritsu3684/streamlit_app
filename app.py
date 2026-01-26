@@ -38,4 +38,4 @@ with st.sidebar:
         elif '内水面養殖業' in fish:
             fish = '内水面養殖業'
     
-    # 現状elifでは1つしか条件をしぼれない
+    # 現状elifでは複数条件を選択しても1つしか条件をしぼれない
