@@ -10,10 +10,10 @@ df = pd.read_csv('漁業産出額.csv')
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
     st.subheader('条件の設定')
-    type = st.pills('漁業の種類を選択してください (複数選択可)',
+    type = st.multiselect('漁業の種類を選択してください (複数選択可)',
                           ['海面','内水面','栽培'],
                           selection_mode="single")
-    if '海面' in type:
+    if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
         
@@ -25,7 +25,7 @@ with st.sidebar:
         # mappingで変換した名称をリストfishに入れる
         fish = [mapping[f] for f in fish]
 
-    elif '内水面' in type:
+    elif type == '内水面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['内水面漁業','内水面養殖業'])
         mapping = {'内水面漁業':'漁業（内水面）',
@@ -33,7 +33,7 @@ with st.sidebar:
 
         fish = [mapping[f] for f in fish]
 
-    elif '栽培' in type:
+    elif type == '栽培':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['海面養殖業','内水面養殖業'])
         
