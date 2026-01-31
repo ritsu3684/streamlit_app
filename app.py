@@ -51,7 +51,6 @@ if fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.dataframe(data)
-    df.set_index('年次',inplace=True)
 
 on = st.toggle('グラフを表示する')
 if on:
