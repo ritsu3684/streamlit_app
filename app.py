@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 # タイトル
 st.title('各年における漁業産出額')
@@ -50,4 +51,4 @@ df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
 
 on = st.toggle('グラフを表示する')
 if on :
-    st.line_chart(df,x='西暦',y=fish,range_x=[df['西暦'].min(),df['西暦'].max()])
+    st.line_chart(df,x='西暦',y=fish)
