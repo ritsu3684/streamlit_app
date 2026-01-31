@@ -47,13 +47,7 @@ if fish:
     st.write("単位：100万円")
     st.dataframe(data)
 
-target_cols = ['漁業産出額', '漁業（海面）', '捕鯨業', '養殖業（海面）', 
-               '漁業（内水面）', '養殖業（内水面）', '生産漁業所得']
 
-for col in target_cols:
-    if col in df.columns:
-        # 文字列としてカンマを除去してから数値に変換。変換できないものはNaNにする
-        df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', ''), errors='coerce')
 df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
 
 on = st.toggle('グラフを表示する')
