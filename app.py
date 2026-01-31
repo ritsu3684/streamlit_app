@@ -4,7 +4,7 @@ import pandas as pd
 # タイトル
 st.title('各年における漁業産出額')
 
-df = pd.read_csv('漁業産出額.csv',encoding='utf_8_sig',na_values=['未計測'],skipinitialspace=True)
+df = pd.read_csv('漁業産出額.csv',na_values=['未計測'],skipinitialspace=True)
 df.columns = df.columns.str.strip()
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
@@ -46,6 +46,7 @@ if fish:
     st.write("単位：100万円")
     st.dataframe(data)
 
-on = st.toggle('グラフを表示する')
-if on :
-    st.write('a')
+with st.sidebar:
+    on = st.toggle('グラフを表示する')
+    if on :
+        st.line_chart(df,x='年次',y=fish)
