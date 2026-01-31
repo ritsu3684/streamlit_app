@@ -1,7 +1,6 @@
-Pills・Segmented Control
+Pills・Segmented Control toggle
 
 統計表名 → 漁業産出額
-データセット名 →
 データ取得日 → 2026/01/26
 各列の意味
 　年次 →　産出額を計測した年次
