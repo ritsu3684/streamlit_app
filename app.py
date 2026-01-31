@@ -6,7 +6,8 @@ st.title('各年における漁業産出額')
 
 df = pd.read_csv('漁業産出額.csv',index_col=0)
 df = df.reset_index()
-df = df.rename(columns={'index': '年次'})
+if 'index' in df.columns:
+    df = df.rename(columns={'index': '年次'})
 df['年'] = (
     df['年次']
     .astype(str)
