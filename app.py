@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # タイトル
-st.title('各年における漁業産出額（単位：100万円）')
+st.title('各年における漁業産出額')
 
 df = pd.read_csv('漁業産出額.csv')
 
@@ -43,4 +43,5 @@ with st.sidebar:
    
 if fish:
     data = df[['漁業産出額'] + fish]
+    st.write("単位：100万円")
     st.dataframe(data)
