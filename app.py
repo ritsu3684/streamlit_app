@@ -4,7 +4,7 @@ import pandas as pd
 # タイトル
 st.title('各年における漁業産出額')
 
-df = pd.read_csv('漁業産出額.csv',encoding='utf_8_sig')
+df = pd.read_csv('漁業産出額.csv',encoding='shift_jis')
 
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
