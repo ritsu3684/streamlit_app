@@ -55,3 +55,5 @@ on = st.toggle('グラフを表示する')
 if on :
     if fish:
         st.line_chart(df,x='西暦',y=fish)
+    else:
+        st.write('サイドバーから条件を設定してください')
