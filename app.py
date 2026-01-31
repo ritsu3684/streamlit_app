@@ -11,8 +11,7 @@ df = pd.read_csv('漁業産出額.csv')
 with st.sidebar:
     st.subheader('条件の設定')
     type = st.multiselect('漁業の種類を選択してください (複数選択可)',
-                          ['海面','内水面','栽培'],
-                          selection_mode="single")
+                          ['海面','内水面','栽培'])
     if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
