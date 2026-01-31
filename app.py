@@ -42,6 +42,6 @@ with st.sidebar:
         fish = [mapping[f] for f in fish]
    
 if fish:
-    data = df[['漁業産出額'] + fish]
+    data = df[['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.dataframe(data)
