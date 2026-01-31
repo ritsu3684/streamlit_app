@@ -52,15 +52,4 @@ df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
 on = st.toggle('グラフを表示する')
 if on :
     if fish:
-        # Altair用にデータを縦長に変換
-        chart_data = df.melt(id_vars=['西暦'], value_vars=fish)
-
-        chart = alt.Chart(chart_data).mark_line().encode(
-            x=alt.X('西暦:Q', title='年'),
-            y=alt.Y('value:Q', 
-                    title='産出額 (100万円)',
-                    scale=alt.Scale(domain=[1960, 2023])), # ここで [最小, 最大] を指定！
-            color='variable:N'
-        )
-
-        st.altair_chart(chart, use_container_width=True)
+        st.line_chart(df,x='西暦',y=fish)
