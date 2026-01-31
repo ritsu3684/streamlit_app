@@ -42,5 +42,5 @@ with st.sidebar:
         fish = [mapping[f] for f in fish]
    
 if fish:
-    data = df[['年次'] + fish]
+    data = df[['漁業産出額'] + fish]
     st.dataframe(data)
