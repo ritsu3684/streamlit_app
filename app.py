@@ -71,3 +71,4 @@ if on :
         )
 
         st.altair_chart(chart, use_container_width=True)
+        st.write(df[fish].head())
