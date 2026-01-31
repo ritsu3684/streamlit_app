@@ -7,6 +7,17 @@ st.title('各年における漁業産出額')
 
 df = pd.read_csv('漁業産出額.csv',na_values=['未計測'],skipinitialspace=True)
 df.columns = df.columns.str.strip()
+# 選択肢になり得るすべての列を数値型に変換
+cols_to_convert = ['漁業産出額', '漁業（海面）', '捕鯨業', '養殖業（海面）', 
+                   '漁業（内水面）', '養殖業（内水面）', '生産漁業所得']
+
+for col in cols_to_convert:
+    if col in df.columns:
+        # カンマを取り除き、数値に変換。変換できないものはNaN（欠損値）にする
+        df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', ''), errors='coerce')
+
+# グラフのX軸用に「西暦」を数値として抽出
+df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
@@ -46,9 +57,6 @@ if fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.dataframe(data)
-
-
-df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
 
 on = st.toggle('グラフを表示する')
 if on :
