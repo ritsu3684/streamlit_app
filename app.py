@@ -45,3 +45,7 @@ if fish:
     data = df[['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.dataframe(data)
+
+on = st.toggle('グラフを表示する')
+if on:
+    st.line_chart(df,x='年次',y='漁業産出額',color={type})
