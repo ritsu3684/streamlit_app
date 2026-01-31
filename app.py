@@ -7,6 +7,13 @@ st.title('各年における漁業産出額')
 df = pd.read_csv('漁業産出額.csv',index_col=0)
 df = df.reset_index()
 df = df.rename(columns={'index': '年次'})
+df['年'] = (
+    df['年次']
+    .astype(str)
+    .str.extract(r'\((\d{4})\)')
+    .astype(int)
+)
+
 
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
@@ -49,5 +56,6 @@ if fish:
     st.dataframe(data)
 
 on = st.toggle('グラフを表示する')
-if on:
-    st.line_chart(df,x='年次',y='漁業産出額',color={type})
+if on and fish:
+    graph = df[['年'] + fish]
+    st.line_chart(graph,x='年',y='fish')
