@@ -4,13 +4,9 @@ import pandas as pd
 # タイトル
 st.title('各年における漁業産出額')
 
-df = pd.read_csv('漁業産出額.csv')
+df = pd.read_csv('漁業産出額.csv',index_col=0)
 df = df.reset_index()
-df = df.rename(columns={'index':'年次'})
-
-print(df.head())
-print(df.index)
-print(df.columns)
+df = df.rename(columns={'index': '年次'})
 
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
