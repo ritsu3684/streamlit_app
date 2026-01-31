@@ -46,6 +46,8 @@ if fish:
     st.write("単位：100万円")
     st.dataframe(data)
 
+df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
+
 on = st.toggle('グラフを表示する')
 if on :
     st.line_chart(df,x='年次',y=fish)
