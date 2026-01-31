@@ -5,6 +5,12 @@ import pandas as pd
 st.title('各年における漁業産出額')
 
 df = pd.read_csv('漁業産出額.csv')
+df = df.reset_index()
+df = df.rename(columns={'index':'年次'})
+
+print(df.head())
+print(df.index)
+print(df.columns)
 
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
@@ -42,9 +48,10 @@ with st.sidebar:
         fish = [mapping[f] for f in fish]
    
 if fish:
-    data = df[['漁業産出額'] + fish + ['生産漁業所得']]
+    data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.dataframe(data)
+    df.set_index('年次',inplace=True)
 
 on = st.toggle('グラフを表示する')
 if on:
