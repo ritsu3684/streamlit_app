@@ -10,7 +10,7 @@ df = pd.read_csv('漁業産出額.csv')
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
     st.subheader('条件の設定')
-    type = st.multiselect('漁業の種類を選択してください (複数選択可)',
+    type = st.selectbox('漁業の種類を選択してください (複数選択可)',
                           ['海面','内水面','栽培'])
     if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
