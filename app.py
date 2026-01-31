@@ -16,10 +16,12 @@ with st.sidebar:
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
         
+        # 選択肢とCSVファイルで使用している名称を対応づける
         mapping = {'漁船漁業':'漁業（海面）',
                    '捕鯨業':'捕鯨業',
                    '海面養殖業':'養殖業（海面）'}
         
+        # mappingで変換した名称をリストfishに入れる
         fish = [mapping[f] for f in fish]
 
     elif type == '内水面':
@@ -39,3 +41,6 @@ with st.sidebar:
     
         fish = [mapping[f] for f in fish]
    
+if fish:
+    data = df[['年次'] + fish]
+    st.dataframe(data)
