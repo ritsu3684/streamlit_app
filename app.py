@@ -7,14 +7,14 @@ st.title('各年における漁業産出額')
 df = pd.read_csv('漁業産出額.csv',index_col=0)
 df = df.reset_index()
 if 'index' in df.columns:
-    df = df.rename(columns={'index': '年次'})
+    df = df.rename(columns={'index': '年次_index'})
 df['年'] = (
     df['年次']
     .astype(str)
     .str.extract(r'\((\d{4})\)')
     .astype(int)
 )
-st.write(df[['年次','年']].head())
+print(df.columns.tolist())
 
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
