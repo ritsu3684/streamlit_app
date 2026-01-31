@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # タイトル
-st.title('各年における漁業産出額')
+st.title('各年における漁業産出額（単位：100万円）')
 
 df = pd.read_csv('漁業産出額.csv')
 
