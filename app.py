@@ -57,6 +57,7 @@ with st.sidebar:
 
 if type is None:
     st.write('サイドバーから漁業の種類を選択してください')
+    st.stop()
 
 if fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
