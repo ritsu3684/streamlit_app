@@ -48,5 +48,5 @@ elif type is None:
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
 
-a_mapping = [':material/thunb_down:',':material/thumb_up:']
+a_mapping = [':material/thumb_down:',':material/thumb_up:']
 selected = st.feedback('thumbs')
