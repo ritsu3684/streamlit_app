@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
 
 # タイトル
 st.title('各年における漁業産出額')
@@ -13,8 +12,18 @@ fish = []
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
     st.subheader('条件の設定')
-    type = st.selectbox('漁業の種類を選択してください (複数選択可)',
-                          ['海面','内水面','栽培'])
+    
+    if 'fish_type' not in st.session_state:
+        st.session_state.fish_type = '海面'
+
+    st.segmented_control(
+        '漁業の種類',
+        ['海面','内水面','栽培']
+        key = 'fish_type'
+    )
+
+    type = st.session_state.fish_type
+
     if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
