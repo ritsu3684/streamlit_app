@@ -7,7 +7,11 @@ st.title('各年における漁業産出額')
 df = pd.read_csv('漁業産出額.csv',na_values=['未計測'],skipinitialspace=True)
 df.columns = df.columns.str.strip()
 
+# グラフのX軸用に「西暦」を数値として抽出
+df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
+
 fish = []
+
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
@@ -55,24 +59,17 @@ with st.sidebar:
     
         fish = [mapping[f] for f in fish]
 
-# グラフのX軸用に「西暦」を数値として抽出
-df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
-
-if type is None:
-    st.write('サイドバーから漁業の種類を選択してください')
-    st.stop()
-
 if fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.write(f'漁業の種類：{type}漁業')
     st.dataframe(data)
+
     on = st.toggle('グラフを表示する')
     if on :
-        if fish:
-            st.line_chart(df,x='西暦',y=fish)
+        st.line_chart(df,x='西暦',y=fish)
+
 else:
     st.info('サイドバーから漁業の種類を選択してください')
-
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
