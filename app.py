@@ -24,12 +24,6 @@ with st.sidebar:
         selection_mode='single'
     )
 
-    if type is None:
-        st.write('漁業の種類を選択してください')
-        st.stop()
-
-    
-
     if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
