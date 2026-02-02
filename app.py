@@ -53,13 +53,11 @@ with st.sidebar:
     
         fish = [mapping[f] for f in fish]
 
-df.set_index('年次',inplace=True)
-
 if type and fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.write(f'漁業の種類：{type}漁業')
-    st.dataframe(data)
+    st.dataframe(data,hide_index=True)
 
     on = st.toggle('グラフを表示する')
     if on :
