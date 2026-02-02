@@ -55,6 +55,9 @@ with st.sidebar:
     
         fish = [mapping[f] for f in fish]
 
+# グラフのX軸用に「西暦」を数値として抽出
+df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
+
 if type is None:
     st.write('サイドバーから漁業の種類を選択してください')
     st.stop()
@@ -64,17 +67,12 @@ if fish:
     st.write("単位：100万円")
     st.write(f'漁業の種類：{type}漁業')
     st.dataframe(data)
-    
-# グラフのX軸用に「西暦」を数値として抽出
-df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
+    on = st.toggle('グラフを表示する')
+    if on :
+        if fish:
+            st.line_chart(df,x='西暦',y=fish)
+else:
+    st.write('サイドバーから漁業の種類を選択してください')
 
-
-
-on = st.toggle('グラフを表示する')
-if on :
-    if fish:
-        st.line_chart(df,x='西暦',y=fish)
-    else:
-        st.write('サイドバーから条件を設定してください')
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
