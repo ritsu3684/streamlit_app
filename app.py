@@ -63,6 +63,9 @@ if fish:
 # グラフのX軸用に「西暦」を数値として抽出
 df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
 
+if fish:
+    st.write('漁業の種類：{type}')
+
 on = st.toggle('グラフを表示する')
 if on :
     if fish:
