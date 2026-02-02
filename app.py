@@ -8,6 +8,7 @@ st.title('各年における漁業産出額')
 df = pd.read_csv('漁業産出額.csv',na_values=['未計測'],skipinitialspace=True)
 df.columns = df.columns.str.strip()
 
+fish = []
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
@@ -49,7 +50,7 @@ if fish:
     st.dataframe(data)
 
 # グラフのX軸用に「西暦」を数値として抽出
-df['西暦'] = df['年次'].str.extract('(\d{4})').astype(float)
+df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
 
 on = st.toggle('グラフを表示する')
 if on :
@@ -59,3 +60,8 @@ if on :
         st.write('サイドバーから条件を設定してください')
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
+
+sentiment_mapping = [":material/thumb_down:", ":material/thumb_up:"]
+selected = st.feedback("thumbs")
+if selected is not None:
+    st.markdown(f"You selected: {sentiment_mapping[selected]}")
