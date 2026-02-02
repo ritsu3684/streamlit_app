@@ -8,6 +8,7 @@ df = pd.read_csv('漁業産出額.csv',na_values=['未計測'],skipinitialspace=
 df.columns = df.columns.str.strip()
 
 fish = []
+st.write('漁業の種類を選択してください')
 # サイドバー
 # 漁業の種類によってマルチセレクトを変更
 with st.sidebar:
