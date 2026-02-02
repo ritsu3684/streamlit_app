@@ -58,10 +58,9 @@ with st.sidebar:
 if fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
+    st.write(f'漁業の種類：{type}')
     st.dataframe(data)
     
-if fish:
-    st.write(f'漁業の種類：{type}')
 # グラフのX軸用に「西暦」を数値として抽出
 df['西暦'] = df['年次'].str.extract('(\d{4})').astype(int)
 
