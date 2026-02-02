@@ -13,8 +13,7 @@ fish = []
 with st.sidebar:
     st.subheader('条件の設定')
     
-    if 'fish_type' not in st.session_state:
-        st.session_state.fish_type = '海面'
+    
 
     st.segmented_control(
         '漁業の種類',
