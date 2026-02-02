@@ -13,15 +13,14 @@ fish = []
 with st.sidebar:
     st.subheader('条件の設定')
     
-    
-
     st.segmented_control(
         '漁業の種類',
         ['海面','内水面','栽培'],
-        key = 'fish_type'
+        key = 'fish_type',
+        selection_mode='single'
     )
 
-    type = st.session_state.fish_type
+    
 
     if type == '海面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
