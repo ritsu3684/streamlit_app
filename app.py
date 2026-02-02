@@ -69,7 +69,7 @@ if type and fish:
     if on :
         st.line_chart(df,x='西暦',y=fish)
 
-else:
+elif type is None:
     st.info('サイドバーから漁業の種類を選択してください')
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
