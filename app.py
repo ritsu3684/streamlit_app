@@ -58,12 +58,12 @@ if type and fish:
     st.write("単位：100万円")
     st.write(f'漁業の種類：{type}漁業')
     st.dataframe(data,hide_index=True)
-
-    on = st.toggle('グラフを表示する')
-    if on :
-        st.line_chart(df,x='西暦',y=fish)
+    st.line_chart(df,x='西暦',y=fish)
 
 elif type is None:
     st.info('サイドバーから漁業の種類を選択してください')
 
 st.link_button('使用したデータのあるサイトへ移動','https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00500208&bunya_l=04&tstat=000001015664&cycle=7&tclass1=000001034725&tclass2val=0')
+
+a_mapping = [':material/thunb_down:',':material/thumb_up:']
+selected = st.feedback('thumbs')
