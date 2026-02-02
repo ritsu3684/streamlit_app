@@ -59,7 +59,7 @@ with st.sidebar:
     
         fish = [mapping[f] for f in fish]
 
-if fish:
+if type and fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
     st.write(f'漁業の種類：{type}漁業')
