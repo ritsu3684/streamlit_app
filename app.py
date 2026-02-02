@@ -18,7 +18,7 @@ with st.sidebar:
 
     st.segmented_control(
         '漁業の種類',
-        ['海面','内水面','栽培']
+        ['海面','内水面','栽培'],
         key = 'fish_type'
     )
 
