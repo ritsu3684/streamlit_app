@@ -36,7 +36,6 @@ with st.sidebar:
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['海面養殖業','内水面養殖業'])
         
-
 if type and fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
     st.write("単位：100万円")
