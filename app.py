@@ -28,30 +28,14 @@ with st.sidebar:
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['漁船漁業','捕鯨業','海面養殖業'])
         
-        # 選択肢とCSVファイルで使用している名称を対応づける
-        mapping = {'漁船漁業':'漁業（海面）',
-                   '捕鯨業':'捕鯨業',
-                   '海面養殖業':'養殖業（海面）'}
-        
-        # mappingで変換した名称をリストfishに入れる
-        fish = [mapping[f] for f in fish]
-
     elif type == '内水面':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['内水面漁業','内水面養殖業'])
-        mapping = {'内水面漁業':'漁業（内水面）',
-                   '内水面養殖業':'養殖業（内水面）'}
-
-        fish = [mapping[f] for f in fish]
 
     elif type == '栽培':
         fish = st.multiselect('売上を確認したい漁業を選択してください（複数選択可）',
                               ['海面養殖業','内水面養殖業'])
         
-        mapping = {'海面養殖業':'養殖業（海面）',
-                   '内水面養殖業':'養殖業（内水面）'}
-    
-        fish = [mapping[f] for f in fish]
 
 if type and fish:
     data = df[['年次'] + ['漁業産出額'] + fish + ['生産漁業所得']]
